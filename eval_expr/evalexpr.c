@@ -5,10 +5,11 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Fri Oct 26 10:29:27 2012 fabien casoni
-** Last update Mon Nov  5 16:43:10 2012 fabien casoni
+** Last update Mon Nov  5 19:17:06 2012 fabien casoni
 */
 
 #include <stdlib.h>
+#include "frpn.h"
 #include "stack.h"
 #include "struct_control.h"
 
@@ -26,6 +27,29 @@ int	check_neg(char *str)
       i += 1;
     }
   return (is_neg);
+}
+
+void    str_to_rpn(char *str, t_control *control)
+{
+  t_elem	*actual;
+  t_pile	*pile;
+  int		ret;
+
+  if (mmalloc(actual, pile) == NULL)
+    return;
+  actual->next = NULL;
+  pile->first = actual;
+  while (str[control->i] != '\0')
+    {
+      if (check_nonop(str, pile, actual,control) == 2)
+        ret += 1;
+      else if (check_operator(str, pile, actual, control) == 2)
+        ret += 1;
+      else
+        check_operande(str, control, pile);
+      control->i += 1;
+    }
+  freestack(actual, control, pile);
 }
 
 int	eval_expr(char *str)

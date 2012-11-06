@@ -5,7 +5,7 @@
 ** Login   <ayel_a@epitech.net>
 ** 
 ** Started on  Wed Oct 10 15:06:13 2012 christophe1 ayel
-** Last update Thu Oct 11 16:12:08 2012 christophe1 ayel
+** Last update Tue Nov  6 18:43:35 2012 fabien casoni
 */
 
 int	my_strlen(char *str)
@@ -13,9 +13,7 @@ int	my_strlen(char *str)
   int	x;
 
   x = 0;
-  while (str[x] != 0)
-    {
-      x = x + 1;
-    }
+  while (str[x] != '\0')
+    x += 1;
   return (x);
 }

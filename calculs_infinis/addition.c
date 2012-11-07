@@ -5,7 +5,7 @@
 ** Login   <ayel_a@epitech.net>
 ** 
 ** Started on  Sat Nov  3 18:22:03 2012 christophe1 ayel
-** Last update Tue Nov  6 18:25:49 2012 christophe1 ayel
+** Last update Wed Nov  7 10:59:30 2012 fabien casoni
 */
 
 # include <stdlib.h>
@@ -25,8 +25,8 @@ int	size(char *str, char *str2)
   char *result2;
 
   result = malloc(sizeof(*result));
-  a = my_strlen(str) - 1;
-  b = my_strlen(str2) - 1;
+  a = my_strlen(str);
+  b = my_strlen(str2);
   if (a >= b)
     {
       result = str;
@@ -48,7 +48,7 @@ char	*change_result(char *result)
   int	b;
 
   result2 = malloc(sizeof(*result + 1));
-  a = my_strlen(result) - 1;
+  a = my_strlen(result);
   b = a + 1;
   result2[0] = '0';
   while (b > 0)
@@ -65,8 +65,8 @@ int	addition(char *result, char *other)
   int	a;
   int	b;
 
-  a = my_strlen(result) - 1;
-  b = my_strlen(other) - 1;
+  a = my_strlen(result);
+  b = my_strlen(other);
   while (b >= 0)
     {
       result[a] = result[a] + other[b] - '0';

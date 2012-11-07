@@ -5,7 +5,7 @@
 ** Login   <ayel_a@epitech.net>
 ** 
 ** Started on  Sat Nov  3 18:22:03 2012 christophe1 ayel
-** Last update Wed Nov  7 13:13:53 2012 fabien casoni
+** Last update Wed Nov  7 14:11:56 2012 christophe1 ayel
 */
 
 # include <stdlib.h>
@@ -70,15 +70,34 @@ int	addition(char *result, char *other)
   while (b >= 0)
     {
       result[a] = result[a] + other[b] - '0';
-      if (result[a] > '9')
-	{
-	  result[a] = result[a] - 10;
-	  result[a - 1] = result[a - 1] + 1;
-	}
       a = a - 1;
       b = b - 1;
     }
+  a = my_strlen(result);
+  while (a >= 1)
+    {
+      if (result[a] > '9')
+        {
+          result[a] = result[a] - 10;
+          result[a - 1] = result[a - 1] + 1;
+        }
+      a = a - 1;
+    }
   my_putstrwozero(result);
+}
+
+int     my_putstrwozero(char *str)
+{
+  int   i;
+
+  i = 0;
+  while (str[i] == '0')
+    i += 1;
+  while (str[i] != '\0')
+    {
+      my_putchar(str[i]);
+      i += 1;
+    }
 }
 
 int	main(int argc, char **argv)

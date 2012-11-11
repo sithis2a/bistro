@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Fri Oct 26 10:29:27 2012 fabien casoni
-** Last update Sun Nov 11 19:03:00 2012 fabien casoni
+** Last update Sun Nov 11 20:50:58 2012 fabien casoni
 */
 
 #include <stdio.h>
@@ -19,19 +19,19 @@ void    str_to_rpn(char *str, t_control *control)
   t_pile	*pile;
   int		ret;
 
-  my_putchar('a');
+  if (mmalloc(actual, pile) == NULL)
+    return;
+  ret = 0;
   actual->next = NULL;
   pile->first = actual;
   while (str[control->i] != '\0')
     {
-      my_putchar('b');
-      if (check_nonop(str, pile, actual,control) == 2)
+      if (check_nonop(str, pile, actual, control) == 2)
         ret += 1;
       else if (check_operator(str, pile, actual, control) == 2)
         ret += 1;
       else
         check_operande(str, control);
-      my_putchar('e');
       control->i += 1;
     }
   freestack(actual, control, pile);
@@ -41,6 +41,16 @@ void	calcrpn(t_control *control)
 {
   t_elem	*actual;
   t_pile	*pile;
+
+  actual->next = NULL;
+  pile->first = actual;
+  control->i = 0;
+  while (control->tmp[control->i] != '\0')
+    {
+      checking(control, actual, pile);
+      control->i += 1;
+    }
+  my_putstr(actual->str);
 }
 
 void	eval_expr(char *str)
@@ -59,8 +69,7 @@ void	eval_expr(char *str)
 
 int	main(int ac, char **av)
 {
-  ac =ac;
-  av = av;
-  eval_expr("2 + 2");
+  if (ac > 1)
+    eval_expr(av[1]);
   return (0);
 }

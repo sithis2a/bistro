@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Thu Oct 11 11:31:18 2012 fabien casoni
-** Last update Thu Nov  8 11:45:44 2012 fabien casoni
+** Last update Sun Nov 11 21:09:44 2012 fabien casoni
 */
 
 #ifndef	__MY_H__
@@ -45,13 +45,25 @@ char	*my_strcat(char *dest, char *src);
 char	*my_strncat(char *dest, char *src, int nb);
 int	my_strlcat(char *dest, char *src, int size);
 void	stack(t_pile *pile, char token);
+void	stackstr(t_pile *pile, char token, int pos);
 char	unstack(t_pile *pile);
-void	display_pile(t_pile *pile);
+char	*unstackstr(t_pile *pile);
 char	*mmalloc(t_elem *elem, t_pile *pile);
 int	check_nonop(char *str, t_pile *pile, t_elem *actual, t_control *ctrl);
 int	check_operator(char *str, t_pile *pile, t_elem *actual, t_control *ctrl);
 void	check_operande(char *str, t_control *ctrl);
 void	freestack(t_elem *actual, t_control *ctrl, t_pile *pile);
 void	initctrl(t_control *control);
+void	checking(t_control *ctrl, t_elem *actual, t_pile *pile);
+void	do_op(t_control *ctrl, t_elem *actual, t_pile *pile);
+int	size(char *str, char *str2);
+char	*change_result(char *result);
+int	addition(char *result, char *other);
+void	my_putstrwozero(char *str);
+char	add(char *val1, char *val2);
+char	less(char *val1, char *val2);
+char	division(char *val1, char *val2);
+char	modulo(char *val1, char *val2);
+char	mult(char *val1, char *val2);
 
 #endif

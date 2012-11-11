@@ -5,7 +5,7 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Thu Nov  8 11:34:19 2012 fabien casoni
-** Last update Thu Nov  8 11:38:09 2012 fabien casoni
+** Last update Sun Nov 11 20:09:05 2012 fabien casoni
 */
 
 #ifndef		_STRUCT_H_
@@ -14,6 +14,7 @@
 typedef struct	s_elem
 {
   char	token;
+  char	*str;
   struct s_elem	*next;
 }		t_elem;
 

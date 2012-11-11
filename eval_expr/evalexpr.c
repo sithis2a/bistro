@@ -5,29 +5,13 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Fri Oct 26 10:29:27 2012 fabien casoni
-** Last update Mon Nov  5 19:17:06 2012 fabien casoni
+** Last update Sun Nov 11 19:03:00 2012 fabien casoni
 */
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "frpn.h"
-#include "stack.h"
-#include "struct_control.h"
-
-int	check_neg(char *str)
-{
-  int	i;
-  int	is_neg;
-
-  i = 0;
-  is_neg = 1;
-  while (str[i] == '-' || str[i] == '+' || str[i] == '(')
-    {
-      if (str[i] == '-')
-	is_neg *= -1;
-      i += 1;
-    }
-  return (is_neg);
-}
+#include "my.h"
+#include "struct.h"
 
 void    str_to_rpn(char *str, t_control *control)
 {
@@ -35,47 +19,48 @@ void    str_to_rpn(char *str, t_control *control)
   t_pile	*pile;
   int		ret;
 
-  if (mmalloc(actual, pile) == NULL)
-    return;
+  my_putchar('a');
   actual->next = NULL;
   pile->first = actual;
   while (str[control->i] != '\0')
     {
+      my_putchar('b');
       if (check_nonop(str, pile, actual,control) == 2)
         ret += 1;
       else if (check_operator(str, pile, actual, control) == 2)
         ret += 1;
       else
-        check_operande(str, control, pile);
+        check_operande(str, control);
+      my_putchar('e');
       control->i += 1;
     }
   freestack(actual, control, pile);
 }
 
-int	eval_expr(char *str)
+void	calcrpn(t_control *control)
 {
-  int		result;
+  t_elem	*actual;
+  t_pile	*pile;
+}
+
+void	eval_expr(char *str)
+{
   t_control	*ctrlstr;
 
   if (str != NULL)
     {
-      ctrlstr = malloc(sizeof(*ctrlstr));
-      if (ctrlstr == NULL)
-	return (-99999999);
+      if ((ctrlstr = malloc(sizeof(*ctrlstr))) == NULL)
+	return;
       initctrl(ctrlstr);
       str_to_rpn(str, ctrlstr);
-      printf("%s\n", ctrlstr->tmp);
-      //result = calc_rpn(control->tmp);
-      //return (result);
+      my_putstr(ctrlstr->tmp);
     }
 }
 
 int	main(int ac, char **av)
 {
-  if (ac > 1)
-    {
-      eval_expr(av[1]);
-      //my_putnbr(eval_expr(av[1]));
-    }
+  ac =ac;
+  av = av;
+  eval_expr("2 + 2");
   return (0);
 }

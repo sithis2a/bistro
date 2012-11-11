@@ -5,11 +5,12 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Mon Nov  5 15:35:51 2012 fabien casoni
-** Last update Mon Nov  5 16:45:48 2012 fabien casoni
+** Last update Thu Nov  8 11:42:24 2012 fabien casoni
 */
 
 #include <stdlib.h>
-#include "struct_control.h"
+#include "my.h"
+#include "struct.h"
 
 void	initctrl(t_control *control)
 {

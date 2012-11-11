@@ -5,11 +5,13 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Tue Oct 30 16:26:41 2012 fabien casoni
-** Last update Tue Oct 30 19:28:58 2012 fabien casoni
+** Last update Thu Nov  8 11:49:26 2012 fabien casoni
 */
 
+#include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "my.h"
+#include "struct.h"
 
 void	stack(t_pile *pile, char token)
 {
@@ -52,27 +54,8 @@ void	display_pile(t_pile *pile)
   actual = pile->first;
   while (actual != NULL)
     {
-      printf("%s\n", actual->token);
+      printf("%c\n", actual->token);
       actual = actual->next;
     }
   printf("\n");
 }
-
-/*
-int	main()
-{
-  t_pile	*pile;
-
-  pile = malloc(sizeof(*pile));
-  stack(pile, "45");
-  stack(pile, "74");
-  stack(pile, "98");
-  printf("Etat de la pile:\n");
-  display_pile(pile);
-  printf("Je destack %s\n", unstack(pile));
-  printf("Je destack %s\n", unstack(pile));
-  printf("\nEtat de la pile:\n");
-  display_pile(pile);
-  free(pile);
-}
-*/

@@ -5,13 +5,12 @@
 ** Login   <casoni_f@epitech.net>
 ** 
 ** Started on  Mon Nov  5 15:41:03 2012 fabien casoni
-** Last update Mon Nov  5 19:16:25 2012 fabien casoni
+** Last update Thu Nov  8 11:48:11 2012 fabien casoni
 */
 
 #include <stdlib.h>
-#include "frpn.h"
-#include "stack.h"
-#include "struct_control.h"
+#include "my.h"
+#include "struct.h"
 
 char	*mmalloc(t_elem *elem, t_pile *pile)
 {
@@ -19,6 +18,7 @@ char	*mmalloc(t_elem *elem, t_pile *pile)
   pile = malloc(sizeof(*pile));
   if (elem == NULL || pile == NULL)
     return (NULL);
+  return ("OK");
 }
 
 int	check_nonop(char *str, t_pile *pile, t_elem *actual, t_control *ctrl)
@@ -45,6 +45,7 @@ int	check_nonop(char *str, t_pile *pile, t_elem *actual, t_control *ctrl)
       ctrl->k += 1;
       return (2);
     }
+  return (1);
 }
 
 int	check_operator(char *str, t_pile *pile, t_elem *actual, t_control *ctrl)
@@ -73,9 +74,10 @@ int	check_operator(char *str, t_pile *pile, t_elem *actual, t_control *ctrl)
       stack(pile, str[ctrl->i]);
       return (2);
     }
+  return (1);
 }
 
-void	check_operande(char *str, t_control *ctrl, t_pile *pile)
+void	check_operande(char *str, t_control *ctrl)
 {
   while (str[ctrl->i] != ' ')
     {
